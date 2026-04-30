@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+title: "Nursing Consistency Index (NCI): Data and Code"
+message: >-
+  If you use this dataset or code, please cite both the article and this
+  repository.
+type: dataset
+authors:
+  - family-names: Tajima
+    given-names: Hiroyuki
+    affiliation: "Faculty of Nursing, Shumei University, Japan"
+abstract: >-
+  Data, analysis scripts, and figure-generation code for an information-
+  theoretic audit of three commercial large language models (GPT-4o, Claude
+  Opus 4.5, Gemini 2.5 Flash-Lite) on 30 nursing clinical scenarios across
+  four sampling temperatures. The Nursing Consistency Index (NCI) is defined
+  as 1 - H(R) / log2(k), where H(R) is the Shannon entropy of the empirical
+  response distribution and k is the number of options.
+keywords:
+  - nursing education
+  - large language models
+  - reliability
+  - Shannon entropy
+  - clinical decision support
+  - reproducibility
+license: MIT
+license-url: "https://opensource.org/licenses/MIT"
+repository-code: "https://github.com/REPLACE_WITH_USERNAME/nci-nursing-llm"
+version: "1.0.0"
+date-released: "2026-04-30"
+preferred-citation:
+  type: article
+  authors:
+    - family-names: Tajima
+      given-names: Hiroyuki
+      affiliation: "Faculty of Nursing, Shumei University, Japan"
+  title: >-
+    Nursing Consistency Index: An information-theoretic measure of LLM output
+    stability across temperatures and judgment categories in nursing clinical
+    scenarios
+  journal: "Nurse Education Today"
+  year: 2026
+  notes: "Submitted"
