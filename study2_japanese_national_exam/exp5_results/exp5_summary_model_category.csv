@@ -1,0 +1,10 @@
+﻿model,category,n_cells,mean_NCI,sd_NCI,mean_accuracy,sd_accuracy
+gpt-4o,Knowledge,120,0.9853,0.0655,0.9622,0.1749
+gpt-4o,Priority,120,0.9666,0.1146,0.9339,0.2217
+gpt-4o,EthicalLegal,120,0.9579,0.135,0.9281,0.234
+claude-opus-4.5,Knowledge,90,1.0,0.0,1.0,0.0
+claude-opus-4.5,Priority,90,0.9945,0.0424,0.9637,0.1806
+claude-opus-4.5,EthicalLegal,90,1.0,0.0,0.9667,0.1795
+gemini-2.5-flash-lite,Knowledge,120,0.9664,0.1257,0.9806,0.0736
+gemini-2.5-flash-lite,Priority,120,0.9632,0.1152,0.8744,0.3116
+gemini-2.5-flash-lite,EthicalLegal,120,0.9728,0.0964,0.9222,0.2511

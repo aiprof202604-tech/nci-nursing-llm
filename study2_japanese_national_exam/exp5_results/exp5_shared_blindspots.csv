@@ -1,0 +1,3 @@
+﻿item_uid,category,key,n_models_wrong_agree,agreed_wrong_answer,gpt4o_dom,gpt4o_frac,claude_dom,claude_frac,gemini_dom,gemini_frac,all3_agree_wrong
+114_2025-AM-75,EthicalLegal,B,2,D,D,0.8,B,1.0,D,1.0,0
+110_2021-PM-71,Priority,B,2,A,A,0.725,B,1.0,A,0.875,0

@@ -1,0 +1,7 @@
+﻿model,stratum,n_items,mean_NCI,mean_accuracy
+gpt-4o,recent_2022_2026,62,0.9653,0.9278
+gpt-4o,older_2017_2021,28,0.9803,0.9714
+claude-opus-4.5,recent_2022_2026,62,0.9973,0.9663
+claude-opus-4.5,older_2017_2021,28,1.0,1.0
+gemini-2.5-flash-lite,recent_2022_2026,62,0.9658,0.9422
+gemini-2.5-flash-lite,older_2017_2021,28,0.9711,0.8893
