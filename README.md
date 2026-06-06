@@ -5,7 +5,7 @@ code for the study:
 
 > Tajima, H. (2026). *Nursing Consistency Index: An information-theoretic
 > measure of LLM output stability across temperatures and judgment categories
-> in nursing clinical scenarios.* (Submitted to *Nurse Education Today*.)
+> in nursing clinical scenarios.* (Tajima, H. (2026). Output consistency of large language models in nursing clinical judgement: a cross-model study introducing the Nursing Consistency Index, with cross-lingual external validation. Manuscript submitted for publication.)
 
 ## Overview
 
