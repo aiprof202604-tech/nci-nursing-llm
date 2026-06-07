@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Nursing Consistency Index (NCI): Data and Code"
+title: "Output consistency of large language models in nursing clinical judgement: data and code"
 message: >-
   If you use this dataset or code, please cite both the article and this
   repository.
@@ -8,35 +8,39 @@ authors:
   - family-names: Tajima
     given-names: Hiroyuki
     affiliation: "Faculty of Nursing, Shumei University, Japan"
+    orcid: "https://orcid.org/0000-0003-3817-4455"
 abstract: >-
-  Data, analysis scripts, and figure-generation code for an information-
-  theoretic audit of three commercial large language models (GPT-4o, Claude
-  Opus 4.5, Gemini 2.5 Flash-Lite) on 30 nursing clinical scenarios across
-  four sampling temperatures. The Nursing Consistency Index (NCI) is defined
-  as 1 - H(R) / log2(k), where H(R) is the Shannon entropy of the empirical
-  response distribution and k is the number of options.
+  Raw API responses, analysis scripts, scenario texts, item-selection code,
+  and figure-generation code for a two-study evaluation of the output
+  consistency of three commercial large language models (GPT-4o, Claude Opus
+  4.5, Gemini 2.5 Flash-Lite) in nursing clinical judgement. Study 1 uses 30
+  author-written English scenarios; Study 2 is an independent cross-lingual
+  external validation on 90 publicly released items of the Japanese national
+  nursing examination (29,700 API calls). The Nursing Consistency Index (NCI)
+  is defined as 1 - H(R) / log2(k), where H(R) is the Shannon entropy of the
+  empirical response distribution and k is the number of options.
 keywords:
-  - nursing education
   - large language models
-  - reliability
-  - Shannon entropy
+  - output consistency
+  - nursing education
   - clinical decision support
   - reproducibility
+  - cross-lingual validation
 license: MIT
-license-url: "https://opensource.org/licenses/MIT"
-repository-code: "https://github.com/REPLACE_WITH_USERNAME/nci-nursing-llm"
-version: "1.0.0"
-date-released: "2026-04-30"
+repository-code: "https://github.com/aiprof202604-tech/nci-nursing-llm"
+version: "1.1.0"
+date-released: "2026-06-06"
+doi: "10.5281/zenodo.19918930"
 preferred-citation:
   type: article
   authors:
     - family-names: Tajima
       given-names: Hiroyuki
       affiliation: "Faculty of Nursing, Shumei University, Japan"
+      orcid: "https://orcid.org/0000-0003-3817-4455"
   title: >-
-    Nursing Consistency Index: An information-theoretic measure of LLM output
-    stability across temperatures and judgment categories in nursing clinical
-    scenarios
-  journal: "Nurse Education Today"
+    Output consistency of large language models in nursing clinical
+    judgement: a cross-model study introducing the Nursing Consistency Index,
+    with cross-lingual external validation
   year: 2026
-  notes: "Submitted"
+  notes: "Manuscript submitted for publication"
