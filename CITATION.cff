@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-title: "Output consistency of large language models in nursing clinical judgement: data and code"
+title: "LLM consistency on nursing clinical judgement: raw responses, per-cell metrics, and analysis code"
 message: >-
   If you use this dataset or code, please cite both the article and this
   repository.
@@ -11,19 +11,25 @@ authors:
     orcid: "https://orcid.org/0000-0003-3817-4455"
 abstract: >-
   Raw API responses, analysis scripts, scenario texts, item-selection code,
-  and figure-generation code for a two-study evaluation of the output
+  and figure-generation code for a two-study evaluation of the response
   consistency of three commercial large language models (GPT-4o, Claude Opus
-  4.5, Gemini 2.5 Flash-Lite) in nursing clinical judgement. Study 1 uses 30
-  author-written English scenarios; Study 2 is an independent cross-lingual
-  external validation on 90 publicly released items of the Japanese national
-  nursing examination (29,700 API calls). The Nursing Consistency Index (NCI)
-  is defined as 1 - H(R) / log2(k), where H(R) is the Shannon entropy of the
-  empirical response distribution and k is the number of options.
+  4.5, Gemini 2.5 Flash-Lite) in nursing clinical judgement, framed as a
+  deployment-safety evaluation of whether output consistency can serve as a
+  pre-deployment safety signal. Study 2, the primary analysis, is an
+  independent cross-lingual external validation on 90 publicly released items
+  of the Japanese national nursing examination (29,700 API calls); Study 1,
+  reported as supplementary, uses 30 author-written English scenarios (9,836
+  valid of 9,900 attempted calls). Response consistency is measured as
+  1 - H(R) / log2(k), the normalised complement of the Shannon entropy of the
+  empirical response distribution (k = number of options), and is reported
+  jointly with accuracy.
 keywords:
   - large language models
-  - output consistency
-  - nursing education
+  - response consistency
+  - nursing clinical judgement
   - clinical decision support
+  - patient safety
+  - deployment safety
   - reproducibility
   - cross-lingual validation
 license: MIT
@@ -39,8 +45,8 @@ preferred-citation:
       affiliation: "Faculty of Nursing, Shumei University, Japan"
       orcid: "https://orcid.org/0000-0003-3817-4455"
   title: >-
-    Output consistency of large language models in nursing clinical
-    judgement: a cross-model study introducing the Nursing Consistency Index,
-    with cross-lingual external validation
+    When consistency stops tracking correctness: a deployment-safety
+    evaluation of large language models on a national nursing licensing
+    examination
   year: 2026
   notes: "Manuscript submitted for publication"
