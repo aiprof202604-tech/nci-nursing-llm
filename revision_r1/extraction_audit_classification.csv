@@ -1,0 +1,91 @@
+item,status,content_artifact,context_missing,description,year,category
+107_2018-AM-32,clean,False,False,,2018,EthicalLegal
+107_2018-AM-60,cosmetic,False,False,,2018,EthicalLegal
+107_2018-AM-78,incomplete,True,False,numerals dropped (child's age; family size),2018,EthicalLegal
+107_2018-AM-81,clean,False,False,,2018,Priority
+108_2019-AM-45,incomplete,True,False,numerals dropped in three options (time since onset; days; dose multiple),2019,Priority
+108_2019-AM-59,clean,False,False,,2019,EthicalLegal
+108_2019-AM-63,cosmetic,False,False,,2019,EthicalLegal
+108_2019-PM-22,clean,False,False,,2019,Priority
+108_2019-PM-41,cosmetic,False,False,,2019,Priority
+108_2019-PM-48,clean,False,False,,2019,EthicalLegal
+108_2019-PM-49,incomplete,True,False,numerals dropped (CKD stage; alcohol frequency and amount),2019,Priority
+108_2019-PM-66,incomplete,True,False,numerals dropped (living alone; number of nightly toilet trips),2019,Priority
+108_2019-PM-69,clean,False,False,,2019,Priority
+108_2019-PM-70,incomplete,True,False,numeral dropped in a distractor (infectious-disease class),2019,EthicalLegal
+109_2020-AM-112,incomplete,True,True,case vignette absent (situational-set sub-question); numeral dropped in an option,2020,Priority
+109_2020-AM-64,incomplete,True,False,numeral dropped in a distractor (timing of first dispatch),2020,Priority
+109_2020-PM-35,cosmetic,False,False,,2020,EthicalLegal
+109_2020-PM-38,clean,False,False,,2020,EthicalLegal
+109_2020-PM-60,incomplete,True,False,numeral dropped (child's age),2020,EthicalLegal
+109_2020-PM-63,clean,False,False,,2020,Priority
+109_2020-PM-69,incomplete,True,False,numeral dropped in a distractor (number of designated psychiatrists),2020,EthicalLegal
+110_2021-AM-29,clean,False,False,,2021,EthicalLegal
+110_2021-AM-52,clean,False,False,,2021,EthicalLegal
+110_2021-AM-65,incomplete,True,False,numerals dropped (household size; months since diagnosis),2021,Priority
+110_2021-AM-68,clean,False,False,,2021,Priority
+110_2021-PM-40,cosmetic,False,False,,2021,Priority
+110_2021-PM-43,cosmetic,False,False,,2021,EthicalLegal
+110_2021-PM-71,incomplete,True,False,numeral dropped in a distractor (number of triage assessments),2021,Priority
+111_2022-AM-118,incomplete,False,True,case vignette absent (situational-set sub-question),2022,Priority
+111_2022-AM-60,incomplete,True,False,numerals dropped (school grade; oxygen flow; weeks to ceremony),2022,EthicalLegal
+111_2022-AM-73,incomplete,True,False,one character dropped in an option ('[pain] control'),2022,EthicalLegal
+111_2022-AM-75,cosmetic,False,False,,2022,Priority
+111_2022-AM-92,incomplete,True,True,case vignette absent; numeral dropped (postoperative day),2022,Priority
+111_2022-PM-48,incomplete,True,False,key word garbled in the stem ('lower limb'),2022,Priority
+111_2022-PM-70,incomplete,True,False,numeral dropped (living alone),2022,Priority
+111_2022-PM-97,incomplete,False,True,case vignette absent (situational-set sub-question),2022,Priority
+112_2023-AM-54,clean,False,False,,2023,EthicalLegal
+112_2023-AM-66,clean,False,False,,2023,EthicalLegal
+112_2023-AM-69,incomplete,True,False,numeral dropped (living alone),2023,Priority
+112_2023-AM-95,incomplete,True,True,case vignette absent; numeral dropped (week of admission),2023,Priority
+112_2023-PM-45,cosmetic,False,False,,2023,Priority
+112_2023-PM-84,incomplete,True,False,numerals dropped (months since admission; 'can do [alone]'),2023,Priority
+113_2024-AM-53,cosmetic,False,False,,2024,EthicalLegal
+113_2024-AM-58,cosmetic,False,False,,2024,EthicalLegal
+113_2024-AM-60,clean,False,False,,2024,EthicalLegal
+113_2024-AM-64,clean,False,False,,2024,EthicalLegal
+113_2024-PM-60,incomplete,True,False,numeral dropped (gestational day),2024,Priority
+114_2025-AM-61,clean,False,False,,2025,EthicalLegal
+114_2025-AM-73,clean,False,False,,2025,EthicalLegal
+114_2025-AM-75,clean,False,False,,2025,EthicalLegal
+114_2025-PM-29,cosmetic,False,False,,2025,EthicalLegal
+114_2025-PM-56,cosmetic,False,False,,2025,Priority
+114_2025-PM-57,clean,False,False,,2025,Priority
+115_2026-AM-10,clean,False,False,,2026,Knowledge
+115_2026-AM-11,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-15,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-18,clean,False,False,,2026,Knowledge
+115_2026-AM-19,clean,False,False,,2026,Knowledge
+115_2026-AM-20,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-24,clean,False,False,,2026,Knowledge
+115_2026-AM-25,clean,False,False,,2026,Knowledge
+115_2026-AM-26,clean,False,False,,2026,Knowledge
+115_2026-AM-28,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-29,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-31,cosmetic,False,False,,2026,EthicalLegal
+115_2026-AM-36,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-37,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-38,clean,False,False,,2026,Knowledge
+115_2026-AM-40,clean,False,False,,2026,Knowledge
+115_2026-AM-41,clean,False,False,,2026,Knowledge
+115_2026-AM-44,clean,False,False,,2026,Knowledge
+115_2026-AM-45,clean,False,False,,2026,Knowledge
+115_2026-AM-47,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-48,clean,False,False,,2026,EthicalLegal
+115_2026-AM-49,clean,False,False,,2026,Knowledge
+115_2026-AM-51,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-53,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-55,clean,False,False,,2026,Knowledge
+115_2026-AM-56,clean,False,False,,2026,Knowledge
+115_2026-AM-57,clean,False,False,,2026,Knowledge
+115_2026-AM-59,clean,False,False,,2026,Priority
+115_2026-AM-60,clean,False,False,,2026,Knowledge
+115_2026-AM-62,cosmetic,False,False,,2026,Knowledge
+115_2026-AM-65,clean,False,False,,2026,Knowledge
+115_2026-AM-68,clean,False,False,,2026,Knowledge
+115_2026-AM-69,clean,False,False,,2026,Knowledge
+115_2026-PM-45,clean,False,False,,2026,EthicalLegal
+115_2026-PM-46,clean,False,False,,2026,Priority
+115_2026-PM-69,cosmetic,False,False,,2026,Priority
+115_2026-PM-72,clean,False,False,,2026,EthicalLegal

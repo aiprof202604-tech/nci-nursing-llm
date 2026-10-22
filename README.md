@@ -4,8 +4,17 @@ This repository contains the data, analysis scripts, and figure-generation
 code for the study:
 
 > Tajima, H. (2026). *When consistency stops tracking correctness: a
-> deployment-safety evaluation of large language models on a national nursing
-> licensing examination.* Manuscript submitted for publication.
+> pre-deployment evaluation of large language models on a national nursing
+> licensing examination.* Manuscript submitted for publication (revised
+> October 2026; earlier title: "...a deployment-safety evaluation of...").
+
+**Revision (October 2026).** The analyses added in the revision — correlation by
+unit of analysis, calibration with Brier decomposition, tie-corrected triage AUC
+with a joint item bootstrap, the prompt audit and sensitivity analyses, and the
+regeneration of the item pool from the official PDFs — are in
+[`revision_r1/`](revision_r1/). The triage AUCs of the submitted version
+(0.71 / 0.52 / 0.75) depended on an arbitrary order of tied items and are
+superseded by the tie-corrected values (GPT-4o 0.77, Claude 0.50, Gemini 0.68).
 
 The study comprises two experiments. In the current manuscript, **Study 2**
 (the Japanese national examination) is the **primary** analysis and **Study 1**
@@ -24,13 +33,14 @@ retains Study 1 at the top level for historical reasons.
 
 We evaluated the response consistency of three commercial large language
 models — **GPT-4o** (OpenAI), **Claude Opus 4.5** (Anthropic), and
-**Gemini 2.5 Flash-Lite** (Google) — as a deployment-safety question: whether
-output consistency can serve as a pre-deployment safety signal for
+**Gemini 2.5 Flash-Lite** (Google) — as a pre-deployment evaluation question:
+what output consistency reveals, and fails to reveal, about correctness on
 clinical-judgement items.
 
 **Study 2 (primary)** re-runs the Study 1 design on 90 publicly released items
-of the Japanese National Nursing Examination (厚生労働省 / MHLW; 106th–115th
-examinations, 2017–2026): 990 cells (90 items × 11 model–temperature
+of the Japanese National Nursing Examination (厚生労働省 / MHLW; screened from
+the 106th–115th examinations, 2017–2026; the 90 selected items come from the
+107th–115th, 2018–2026): 990 cells (90 items × 11 model–temperature
 conditions) × 30 trials = 29,700 analysed responses. See
 [`study2_japanese_national_exam/README.md`](study2_japanese_national_exam/README.md).
 
@@ -76,6 +86,8 @@ nci-nursing-llm/
 ├── docs/
 │   ├── data_dictionary.md         # column-by-column description
 │   └── methodology.md             # study protocol summary
+├── reanalysis_v31/                # canonical Study 2 reanalysis + headline-number checker
+├── revision_r1/                   # code for the analyses added in the October 2026 revision
 └── study2_japanese_national_exam/ # Study 2 (primary; cross-lingual validation)
     ├── README.md                  # Study 2 documentation
     ├── exp5_build_item_pool.py    # builds item pool from MHLW PDFs
@@ -167,17 +179,20 @@ See `docs/methodology.md` for the full Study 1 protocol and
   with `400 invalid_request_error: temperature: range: 0..1`. These rows
   are retained in `raw_responses.csv` with `response = API_REJECTED_T_OUT_OF_RANGE`
   for transparency. They do **not** enter any consistency or statistical computation.
-- **62 additional API rate-limit errors** (49 Claude, 13 Gemini) are
-  marked `API_RATE_LIMITED`. Two GPT-4o responses had non-conforming
-  format and are marked `INVALID_FORMAT`. The 9,836 valid responses
+- **62 additional API rate-limit errors** (49 Claude, 12 Gemini, 1 GPT-4o)
+  are marked `API_RATE_LIMITED`. Two Gemini responses had non-conforming
+  format and are marked `INVALID_FORMAT`. (Corrected in October 2026; an
+  earlier version of this note gave 13 Gemini and two GPT-4o.) The 9,836 valid responses
   represent 99.4% of the 9,900 attempted calls.
 - All `request_id` values from the original raw error messages have been
   stripped to keep the public file free of vendor-specific telemetry.
 - **Study 2 row counts:** the runner log
-  (`study2_japanese_national_exam/exp5_results/raw.csv`) includes resume/retry
-  duplicate rows; `exp5_analyze.py` de-duplicates on
-  `(item, model, temperature, trial)` to exactly 30 trials per cell
-  (29,700 analysed responses). See the Study 2 README for details.
+  (`study2_japanese_national_exam/exp5_results/raw.csv`, 30,909 rows) contains
+  the 29,700 analysed responses plus 1,209 Claude requests that the API rejected
+  before generation (HTTP 400, prepaid credit exhausted) and that were re-issued;
+  de-duplication on `(item, model, temperature, trial)` keeping the last record
+  removes them, and no combination has more than one successful response. See the
+  Study 2 README for details.
 
 ## Citation
 
@@ -185,7 +200,7 @@ If you use this dataset or code, please cite the article and this repository.
 
 ```bibtex
 @article{tajima2026consistency,
-  title   = {When consistency stops tracking correctness: a deployment-safety
+  title   = {When consistency stops tracking correctness: a pre-deployment
              evaluation of large language models on a national nursing
              licensing examination},
   author  = {Tajima, Hiroyuki},

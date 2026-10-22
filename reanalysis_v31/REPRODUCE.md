@@ -13,7 +13,11 @@ It locates the raw responses automatically at
 `../study2_japanese_national_exam/exp5_results/raw_dedup_29700.csv` and prints,
 for each model, ECE, the unanimous-but-wrong residual, triage AUC, and
 Spearman's rho, each checked against the value reported in the paper. Expected
-final line: `ALL HEADLINE NUMBERS REPRODUCED`.
+final line: `ALL HEADLINE NUMBERS REPRODUCED`. Since the October 2026 revision,
+the checker verifies the tie-corrected triage AUCs of the revised manuscript
+(0.77 / 0.50 / 0.68) and also reproduces the originally submitted values
+(0.71 / 0.52 / 0.75), which depended on an arbitrary order of tied items. The
+analyses added in the revision are in `../revision_r1/`.
 
 ## Full reanalysis
 ```

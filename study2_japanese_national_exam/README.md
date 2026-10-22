@@ -1,14 +1,14 @@
 # Study 2 — Cross-lingual external validation (Japanese National Nursing Examination)
 
-This folder contains the data and code for **Study 2** of the manuscript
-*"Output consistency of large language models in nursing clinical judgement: a
-cross-model study introducing the Nursing Consistency Index, with cross-lingual
-external validation."* In the source code Study 2 is named **experiment 5
-(`exp5`)**.
+This folder contains the data and code for **Study 2** (the primary analysis) of
+the manuscript *"When consistency stops tracking correctness: a pre-deployment
+evaluation of large language models on a national nursing licensing
+examination."* In the source code Study 2 is named **experiment 5 (`exp5`)**.
 
 Study 2 re-runs the Study 1 design on **90 publicly released items of the
-Japanese National Nursing Examination** (厚生労働省 / MHLW; 106th–115th
-examinations, 2017–2026), as an independent, externally authored, non-English
+Japanese National Nursing Examination** (厚生労働省 / MHLW; screened from the
+106th–115th examinations, 2017–2026; the selected items come from the
+107th–115th, 2018–2026), as an independent, externally authored, non-English
 replication. The raw examination PDFs are public and are available from the
 MHLW examination page cited in the manuscript.
 
@@ -20,12 +20,16 @@ MHLW examination page cited in the manuscript.
   {0.0, 0.5, 1.0} only, because the Anthropic API rejects temperature > 1.0.
 - **Trials:** 30 per cell, where a *cell* = (item × model × temperature).
 - **Scale:** 90 items × 11 model–temperature conditions = **990 cells**, i.e.
-  **29,700 analysed responses**. The run completed with zero API errors;
-  11 responses (0.037%) were empty/unparseable.
+  **29,700 analysed responses**. Every cell has 30 successful responses; 1,209
+  Claude requests rejected by the API before generation (HTTP 400, prepaid
+  credit exhausted) were re-issued (see "Row counts" below). 11 responses
+  (0.037%) contained no option number (ten Gemini responses of "0" to one item,
+  one GPT-4o text response) and are excluded from the answer distributions.
 - **NCI** = 1 − H(R) / log₂(k), where H(R) is the Shannon entropy (base 2) of the
   empirical response distribution over the 30 trials and k is the number of
-  answer options for that item (4 or 5). Empty/unparseable responses are treated
-  as a distinct category for NCI and as incorrect for accuracy.
+  answer options for that item (4 or 5). In the exploratory `exp5_analyze.py`,
+  empty responses are a distinct category; the reported statistics instead
+  exclude them (canonical convention, see `../reanalysis_v31/REPRODUCE.md`).
 
 ## Item selection (`exp5_build_item_pool.py`, `exp5_select_items.py`)
 
@@ -37,6 +41,18 @@ Image-dependent items, multiple-answer items, items excluded from official
 scoring, and context-dependent sub-questions are filtered out. The final pool is
 **90 self-contained single-best-answer items: 30 Knowledge, 30 Priority,
 30 Ethical/Legal.**
+
+Stage-wise counts (pool regenerated in October 2026 by re-running
+`exp5_build_item_pool.py` unchanged on the official PDFs; the original selection
+function `load_items()` in `exp5_run_full.py` then selects exactly the same 90
+items, with identical keys and prompts — see `../revision_r1/verify_item_selection.py`):
+2,400 booklet items → 2,391 segmented → 2,160 with a single official answer →
+1,193 candidates without an image-related keyword (keyword categories:
+Ethical/Legal 51, Priority 65, Knowledge 1,077) → 28 removed in an LLM-assisted
+topical review of the Ethical/Legal and Priority candidates (16 and 12; the
+lists `ETH_EXCLUDE`/`PRI_EXCLUDE` name 32 items, four of which are Knowledge
+candidates to which the Priority list does not apply) → newest-first selection,
+replacing 21 items that failed extraction checks → 90 items.
 
 ## Files
 
@@ -55,7 +71,7 @@ study2_japanese_national_exam/
     ├── exp5_summary_model_temp.csv
     ├── exp5_summary_model_category.csv
     ├── exp5_summary_model_cat_temp.csv
-    ├── exp5_summary_recent.csv         # recent (2022–2026) vs older (2017–2021) strata
+    ├── exp5_summary_recent.csv         # recent (2022–2026) vs older (2018–2021) strata (exploratory convention)
     ├── exp5_shared_blindspots.csv      # items where >1 vendor agrees on the same wrong answer
     ├── exp5_item_table.csv             # per-item per-model accuracy/NCI (supplementary)
     └── exp5_findings.md                # analysis notes
@@ -72,9 +88,13 @@ study2_japanese_national_exam/
 
 ## Row counts: why `raw.csv` has 30,909 rows but the study reports 29,700
 
-`raw.csv` is the **complete, unedited runner log**. Because the runner supports
-resume/retry, it appended duplicate rows for ~42 Claude cells (the same trial
-numbers written more than once), giving 30,909 logged rows. `exp5_analyze.py`
+`raw.csv` is the **complete, unedited runner log** (30,909 rows). It contains
+the 29,700 analysed responses plus 1,209 rows for Claude requests (42 cells)
+that the API rejected before generating any output because the account's
+prepaid credit was exhausted; the runner stopped, and the requests were
+re-issued on resumption, so those trial numbers appear twice (first as an
+error, then as a response). No `(item, model, temperature, trial)` combination
+has more than one successful response. `exp5_analyze.py`
 **de-duplicates on `(item_uid, model, temp, trial)` (keeping the last record)**
 before computing any metric, yielding exactly **30 trials per cell = 29,700
 unique analysed responses**, which is the number reported in the manuscript.
@@ -85,9 +105,12 @@ running `exp5_analyze.py` on `raw.csv` produces identical results.
 
 Running the analysis reproduces the manuscript exactly:
 
-- **Table 3 (mean NCI by temperature):** GPT-4o 0.992 / 0.981 / 0.967 / 0.940;
-  Gemini 1.000 / 0.987 / 0.951 / 0.932; Claude 1.000 / 0.999 / 0.996 — and the
-  accompanying accuracy values — all match.
+- **Mean NCI by temperature (`exp5_analyze.py`, empty responses as a
+  category):** GPT-4o 0.992 / 0.981 / 0.967 / 0.940; Gemini 1.000 / 0.987 /
+  0.951 / 0.932; Claude 1.000 / 0.999 / 0.996. The manuscript reports the
+  canonical values with empty responses excluded (`../reanalysis_v31/`):
+  GPT-4o 0.992 / 0.981 / 0.967 / 0.941; Gemini 1.000 / 0.987 / 0.954 / 0.935;
+  Claude 1.000 / 0.999 / 0.996.
 - **Per-cell:** all **990/990** cells in `exp5_cell_metrics.csv` are reproduced
   from the raw data.
 - Key items in §3.9 reproduce, e.g. item `115_2026-AM-31` (GPT-4o accuracy
