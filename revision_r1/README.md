@@ -30,6 +30,7 @@ Inputs used: `study2_japanese_national_exam/exp5_results/raw_dedup_29700.csv`,
     python3 modal_tie_check.py                    # the single tied modal answer and its sensitivity (Supplementary S10.5)
     python3 request_log_checks.py                 # invalid responses, rejected requests, trial-1 check (Supplementary S7.1)
     python3 pilot_common_range.py                 # pilot: common-range Friedman tests (other pilot statistics: scripts/analyze.py)
+    python3 pilot_invalid_recoding.py             # pilot: invalid responses recoded as a category (Supplementary S1.3)
     python3 make_figures_r1.py                    # Figures 1-3 (PNG 600 dpi, TIFF CMYK 300 dpi)
     python3 verify_item_selection.py              # optional: regenerates the item pool from the official PDFs (S8)
 
