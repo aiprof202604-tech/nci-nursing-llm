@@ -9,9 +9,7 @@ scipy 1.18, matplotlib 3.11). `verify_item_selection.py` additionally needs pdfp
 to www.mhlw.go.jp.
 
 ## Data
-Inside this repository, run the scripts from the repository root with `export NCI_REPO=.` (for example,
-`python3 revision_r1/revision_analyses.py`). As a stand-alone archive (Supplementary_Code_R1.zip), clone the study
-repository next to this folder (or point `NCI_REPO` to it):
+Clone the study repository next to this folder (or point `NCI_REPO` to it):
 
     git clone https://github.com/aiprof202604-tech/nci-nursing-llm
     export NCI_REPO=nci-nursing-llm      # default
@@ -31,6 +29,9 @@ Inputs used: `study2_japanese_national_exam/exp5_results/raw_dedup_29700.csv`,
     python3 request_log_checks.py                 # invalid responses, rejected requests, trial-1 check (Supplementary S7.1)
     python3 pilot_common_range.py                 # pilot: common-range Friedman tests (other pilot statistics: scripts/analyze.py)
     python3 pilot_invalid_recoding.py             # pilot: invalid responses recoded as a category (Supplementary S1.3)
+    python3 calibration_uncertainty.py            # bootstrap intervals for ECE and Brier score (Supplementary S10.2)
+    python3 check_special_scoring.py              # optional: Ministry special-scoring lists (106th-115th) vs the 90 items and, after
+                                                  # verify_item_selection.py, vs the 1,193 candidates (S8.1; needs www.mhlw.go.jp)
     python3 make_figures_r1.py                    # Figures 1-3 (PNG 600 dpi, TIFF CMYK 300 dpi)
     python3 verify_item_selection.py              # optional: regenerates the item pool from the official PDFs (S8)
 
