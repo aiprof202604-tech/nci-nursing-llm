@@ -1,4 +1,4 @@
-# Supplementary code — revision analyses (ACI-2026-07-RA-0313, Round 1)
+# Supplementary code — revision analyses (ACI-2026-07-RA-0313, first and second revisions)
 
 These scripts reproduce every statistic added or changed in the revised manuscript from the public raw data.
 They make **no API calls**.
@@ -34,11 +34,13 @@ Inputs used: `study2_japanese_national_exam/exp5_results/raw_dedup_29700.csv`,
     python3 check_special_scoring.py              # optional: Ministry special-scoring lists (106th-115th) vs the 90 items and, after
                                                   # verify_item_selection.py, vs the 1,193 candidates (S8.1; needs www.mhlw.go.jp)
     python3 make_figures_r1.py                    # Figures 1-3 (PNG 600 dpi, TIFF CMYK 300 dpi)
+    python3 make_figure_s1_r1.py                  # Supplementary Figure S1 (after revision_analyses.py)
     python3 verify_item_selection.py              # optional: regenerates the item pool from the official PDFs (S8)
 
 Results are written to `outputs/` (`revision_results.json`, `sensitivity_subsets.json`,
 `consistently_wrong_by_temperature.json`, `modal_tie_check.json`, `request_log_checks.json`,
-`item_selection_regenerated.json`).
+`item_selection_regenerated.json`, `calibration_uncertainty.json`, `special_scoring.json`,
+`category_complete_items.json`).
 Bootstrap work in `revision_analyses.py` is split into chunks that run in parallel and are cached in
 `outputs/cache/`, so an interrupted run resumes where it stopped; `verify_item_selection.py` skips PDFs that were
 already downloaded. Progress is printed.
