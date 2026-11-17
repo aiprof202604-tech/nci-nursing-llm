@@ -30,6 +30,7 @@ Inputs used: `study2_japanese_national_exam/exp5_results/raw_dedup_29700.csv`,
     python3 pilot_common_range.py                 # pilot: common-range Friedman tests (other pilot statistics: scripts/analyze.py)
     python3 pilot_invalid_recoding.py             # pilot: invalid responses recoded as a category (Supplementary S1.3)
     python3 calibration_uncertainty.py            # bootstrap intervals for ECE and Brier score (Supplementary S10.2)
+    python3 category_complete_items.py            # judgment categories on the 68 information-complete items (S14, Table S12)
     python3 check_special_scoring.py              # optional: Ministry special-scoring lists (106th-115th) vs the 90 items and, after
                                                   # verify_item_selection.py, vs the 1,193 candidates (S8.1; needs www.mhlw.go.jp)
     python3 make_figures_r1.py                    # Figures 1-3 (PNG 600 dpi, TIFF CMYK 300 dpi)
