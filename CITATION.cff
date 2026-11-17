@@ -35,8 +35,8 @@ keywords:
   - cross-lingual validation
 license: MIT
 repository-code: "https://github.com/aiprof202604-tech/nci-nursing-llm"
-version: "1.3.0"
-date-released: "2026-10-23"
+version: "1.3.1"
+date-released: "2026-11-18"
 doi: "10.5281/zenodo.19918930"
 preferred-citation:
   type: article
