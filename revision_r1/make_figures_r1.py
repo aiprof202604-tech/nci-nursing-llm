@@ -4,7 +4,7 @@
 Same visual identity as the submitted figures (Okabe-Ito: GPT-4o #0072B2, Claude #D55E00, Gemini #009E73;
 markers o / s / ^; palette validated with the dataviz validator: worst adjacent CVD dE 11.0).
 Changes: Fig 1 'normalized' (American English), non-overlapping annotation, bands = +/-1 SE;
-Fig 2 x-label = modal-answer frequency; Fig 3 = tie-corrected expected capture curves with joint-bootstrap bands.
+Fig 2 x-label = modal-answer frequency, bin counts labelled at each point; Fig 3 = tie-corrected expected capture curves with joint-bootstrap bands.
 Outputs: PNG 600 dpi (preview) and TIFF CMYK 300 dpi LZW (submission). Resume: bootstrap bands cached (npz);
 parallel: one process per model; progress printed."""
 import os, sys, json, time
@@ -35,6 +35,7 @@ COL = {"gpt-4o": "#0072B2", "claude-opus-4.5": "#D55E00", "gemini-2.5-flash-lite
 MK = {"gpt-4o": "o", "claude-opus-4.5": "s", "gemini-2.5-flash-lite": "^"}
 LAB = {"gpt-4o": "GPT-4o", "claude-opus-4.5": "Claude Opus 4.5", "gemini-2.5-flash-lite": "Gemini 2.5 Flash-Lite"}
 GRID = "#e6e6e6"; REF = "#8c8c8c"
+NOFF = {"gpt-4o": (0, -13), "claude-opus-4.5": (0, 11), "gemini-2.5-flash-lite": (12, 7)}  # bin-count label offsets
 GRIDX = np.linspace(0, 1, 101)
 
 def save(fig, name):
@@ -111,6 +112,9 @@ def fig2(cells, R):
         bins = [x for x in R["D_calibration"][m]["bins"] if x["n"]]
         a.plot([x["mean_conf"] for x in bins], [x["acc"] for x in bins], color=COL[m], lw=2.0, marker=MK[m], ms=8,
                mec="white", mew=1.0, zorder=3, label=f"{LAB[m]}  (ECE {R['D_calibration'][m]['ECE']:.3f})")
+        for x in bins:                                   # bin counts (number of item x temperature cells)
+            a.annotate(str(x["n"]), (x["mean_conf"], x["acc"]), xytext=(NOFF[m] if x["acc"] > 0.05 or m != "gpt-4o" else (-12, 8)), textcoords="offset points",
+                       fontsize=8.5, color=COL[m], ha="center", va="center", zorder=4)
     a.set_xlim(0.45, 1.02); a.set_ylim(-0.03, 1.04)
     a.xaxis.set_major_locator(MultipleLocator(0.1)); a.yaxis.set_major_locator(MultipleLocator(0.2))
     a.set_xlabel("Modal-answer frequency (sampling-based confidence score)")
